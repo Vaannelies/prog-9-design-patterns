@@ -1,21 +1,22 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
-    <!-- <Field/> -->
-    <HelloWorld/>
+    <game-box/>
+    <!-- <HelloWorld/> -->
   </div>
 </template>
 
 <script>
-import Field from './components/Field'
-import HelloWorld from './components/HelloWorld.vue'
+import { Component, Vue } from 'vue-property-decorator'
+import GameBox from './components/GameBox';
 
-export default {
-  name: 'App',
-  components: {
-    // Field,
-    HelloWorld
-  }
+@Component({
+   components: {
+     'game-box': GameBox,
+   }
+})
+export default class App extends Vue {
+
 }
 </script>
 
@@ -26,6 +27,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  /* margin-top: 60px; */
+  background-color: #101130;
 }
 </style>
