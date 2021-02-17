@@ -1,19 +1,20 @@
 <template>
   <div id="app">
     <!-- <img src="./assets/logo.png"> -->
-    <p class="title">GameBox</p>
-    <game-box/>
+    <p class="title">To do</p>
+    <to-do-list/>
     <!-- <HelloWorld/> -->
   </div>
 </template>
 
-<script>
-import { Component, Vue } from 'vue-property-decorator'
-import GameBox from './components/GameBox';
+<script lang='ts'>
+import { Component } from 'vue-property-decorator'
+import Vue from 'Vue'
+import ToDoList from './components/ToDoList';
 
 @Component({
    components: {
-     'game-box': GameBox,
+     ToDoList,
    }
 })
 export default class App extends Vue {
@@ -21,7 +22,7 @@ export default class App extends Vue {
 }
 </script>
 
-<style>
+<style lang='ts'>
   @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 
   body {
@@ -39,13 +40,20 @@ export default class App extends Vue {
     flex-direction: column;
     align-items: center;
     /* margin-top: 60px; */
-    background-color: #084C61;
+    background-color: white;
 
     /* #177E89 */
     /* #084C61 */
     /* #DB3A34 */
     /* #FFC857 */
     /* #323031 */
+
+
+    /* #eff7cf */
+    /* #bad9b5 */
+    /* #aba361 */
+    /* #732c2c */
+    /* #420c14 */
   }
 
   .title {

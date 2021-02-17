@@ -1,14 +1,21 @@
 <template>
     <div class='container'>
+        <ul v-bind:key="i" v-for="i in hoi">
+            <to-do/>
+        </ul>
     </div>
 </template>
 
-<script>
+<script lang='ts'>
 import { Component, Vue } from 'vue-property-decorator'
-
-@Component
+import ToDo from './ToDo'
+@Component ({
+    components: {
+        ToDo
+    }
+})
 export default class GameBox extends Vue {
-    
+    hoi: number[] = [1,2,3]
 }
 </script>
 <style scoped>
