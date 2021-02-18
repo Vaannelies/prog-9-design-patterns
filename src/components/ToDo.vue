@@ -1,14 +1,32 @@
 <template>
-    <li>
-        hoi
-    </li>
+   <input class='input' type='text' :value='text'/>
 </template>
 
 <script lang='ts'>
-import { Vue, Component } from 'vue-property-decorator'
+import { Vue, Options } from 'vue-class-component'
+import { Component, Prop } from 'vue-property-decorator';
 
-@Component
+// @Options
+
+// @Component
 export default class ToDo extends Vue {
+    // constructor(
+    //     text: string,
+    // )
+    @Prop({required: false}) text?: string;
     
+    // text: string = ''
+
+    // setName(t: string) {
+    //     this.text = t
+    //     // console.log(this.text)
+    // }
+    // text: string = 'hallo'
 }
 </script>
+
+<style scoped>
+    .input {
+        border: none;
+    }
+</style>
