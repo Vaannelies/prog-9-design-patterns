@@ -1,8 +1,8 @@
 <template>
     <div class='container'>
         <ul class='list'>
-            <li v-bind:key="i" v-for="i in toDoItems">
-                <to-do :text="i"/>
+            <li v-bind:key="(i, key)" v-for="(i, key) in toDoItems">
+                <to-do :text="i" @delete="deleteToDo(key)"/>
             </li>
             <li>
                   <form @submit.prevent="createToDo()">
@@ -35,10 +35,19 @@ export default class GameBox extends Vue {
         this.toDoItems.push(this.inputText)
         this.inputText = ''
     }
+
+    deleteToDo(key: any) {
+        console.log(key)
+       this.toDoItems.splice(key, 1)
+       console.log(this.toDoItems)
+    }
 }
 </script>
 <style scoped>
+    @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
     .container {
+        padding-top: 20px;
         border: 6px #bad9b5 solid;
         border-radius: 12px;
         height: 70vh;
@@ -46,18 +55,17 @@ export default class GameBox extends Vue {
         background: white;
         display: flex;
         flex-direction: column;
+        overflow: auto;
     }
-/* 
-    .input--main {
-        border: 2px rgb(213, 213, 213) solid;
-        border-radius: 3px;
-    } */
 
     .input {
+        margin-left: 34px;
         border: none;
+        font-size: 20px;
+        font-family: 'Varela Round'
     }
 
-    .button--main {
-        height: 20px;
+    .list {
+        list-style-type: none;
     }
 </style>

@@ -32,6 +32,7 @@ export default class App extends Vue {
     flex-direction: column;
     height: 100vh;
     align-items: center;
+    font-size: 20px;
     background-color: #eff7cf;
   }
 

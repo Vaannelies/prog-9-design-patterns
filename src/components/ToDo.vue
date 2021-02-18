@@ -1,39 +1,70 @@
 <template>
-   <input class='input' type='text' :value='text'/>
+    <div  @mouseover="visible = true" @mouseleave="visible = false">
+        <input class='checkbox' type="checkbox" v-model="checked" />
+        <input class='input' :class="checked ? 'input--checked' : false" type='text' :value='text'/>
+        <button class='delete' v-if="visible" @click="deleteToDo">x</button>
+    </div>
 </template>
 
 <script lang='ts'>
-import { Vue, Options } from 'vue-class-component'
-import { Component, Prop } from 'vue-property-decorator';
+import { Vue  } from 'vue-class-component'
+import { Prop } from 'vue-property-decorator';
 
-// @Options
-
-// @Component
 export default class ToDo extends Vue {
-    // constructor(
-    //     text: string,
-    // )
-    $refs!: {
-        message: string,
-    }
     @Prop({required: true}) text!: string;
 
-    created() {
-        console.log(this.text)
-    }
-    
-    // text: string = ''
+    visible: boolean = false
+    checked: boolean = false
 
-    // setName(t: string) {
-    //     this.text = t
-    //     // console.log(this.text)
-    // }
-    // text: string = 'hallo'
+    deleteToDo() {
+        this.$emit('delete')
+    }
+
 }
 </script>
 
 <style scoped>
+
+    @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
     .input {
         border: none;
+        font-size: 20px;
+        font-family: 'Varela Round';
+
     }
+  
+    .input--checked {
+        text-decoration: line-through;
+        color: gray;
+    }
+
+    .delete {
+        border: 1px solid #420c14;
+        border-radius: 2px;
+        color: #420c14;
+        background: #ed5252 ;
+        margin-left: 10px;
+        width: auto;
+        font-size: 20px;
+    }
+    
+    .checkbox {
+        padding-top: 12px;
+        background-color: grey;
+        height: 20px;
+        font-size: 20px;
+        width: 20px;
+        margin-right: 10px;
+        
+    }
+    .checkbox:after {
+        background-color: grey;
+        height: 20px;
+        font-size: 20px;
+        width: 20px;
+        margin-right: 10px;
+        
+    }
+
 </style>
