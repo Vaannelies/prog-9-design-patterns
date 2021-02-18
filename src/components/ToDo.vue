@@ -13,7 +13,14 @@ export default class ToDo extends Vue {
     // constructor(
     //     text: string,
     // )
-    @Prop({required: false}) text?: string;
+    $refs!: {
+        message: string,
+    }
+    @Prop({required: true}) text!: string;
+
+    created() {
+        console.log(this.text)
+    }
     
     // text: string = ''
 

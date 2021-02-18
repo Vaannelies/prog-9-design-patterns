@@ -2,11 +2,11 @@
     <div class='container'>
         <ul class='list'>
             <li v-bind:key="i" v-for="i in toDoItems">
-                <to-do/>
+                <to-do :text="i"/>
             </li>
             <li>
-                  <form @submit.prevent="createToDo(inputText)">
-                      <input class='input' type='text' v-model="inputText" placeholder="Enter text here..."/>
+                  <form @submit.prevent="createToDo()">
+                      <input class='input' type='text' v-model="inputText" :text="inputText" placeholder="Enter text here..."/>
                  </form>
             </li>
         </ul>
@@ -32,12 +32,8 @@ export default class GameBox extends Vue {
     inputText: string = ""
 
     createToDo() {
-
-        const newToDo = new ToDo('')
-        this.toDoItems.push(newToDo)
+        this.toDoItems.push(this.inputText)
         this.inputText = ''
-        // newToDo.setName(this.inputText)
-        // newToDo.text = this.inputText
     }
 }
 </script>
