@@ -9,9 +9,25 @@
 <script lang='ts'>
 import { Vue  } from 'vue-class-component'
 import { Prop } from 'vue-property-decorator';
+import { IComponent } from './IComponent';
 
-export default class ToDo extends Vue {
+export default class ToDo extends Vue implements IComponent {
     @Prop({required: true}) text!: string;
+
+    getHtml(): string {
+   let  html = `
+            <div  @mouseover="visible = true" @mouseleave="visible = false">
+            <input class='checkbox' type="checkbox" v-model="checked" />   `
+
+               html+= `
+           <input class='input' :class="checked ? 'input--checked' : false" type='text' value='${this.text}'/>
+                  `
+        
+      html+= `</div> `
+        return html
+      return this.text
+    }
+
 
     visible: boolean = false
     checked: boolean = false
