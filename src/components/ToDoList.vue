@@ -2,10 +2,7 @@
     <div class='container'>
         <ul class='list'>
             <li v-bind:key="(i, key)" v-for="(i, key) in toDoItems">
-                <!-- <to-do :text="i" @delete="deleteToDo(key)"/> -->
-                <div @delete="deleteToDo(key)" v-html="i"></div>
-                <button @click="deleteToDo(key)">x</button>
-                <button @click="turnIntoProject(key)">+</button>
+                <to-do :text="i" @delete="deleteToDo(key)"/>
             </li>
             <li>
                   <form @submit.prevent="createToDo()">
@@ -23,24 +20,19 @@
 
 <script lang='ts'>
 import { Options, Vue } from 'vue-class-component'
-import { IComponent } from './IComponent'
 import ToDo from './ToDo.vue'
-import Project from './Project.vue'
 
 @Options ({
     components: {
         'to-do': ToDo
     }
 })
-export default class ToDoList extends Vue {
+export default class GameBox extends Vue {
     toDoItems: any[] = []
     inputText: string = ""
 
     createToDo() {
-        // this.toDoItems.push(this.inputText)
-        let todo: IComponent = new ToDo({text: this.inputText})
-        let html = todo.getHtml()
-        this.toDoItems.push(html)
+        this.toDoItems.push(this.inputText)
         this.inputText = ''
     }
 
@@ -49,22 +41,11 @@ export default class ToDoList extends Vue {
        this.toDoItems.splice(key, 1)
        console.log(this.toDoItems)
     }
-
-    turnIntoProject(key: any) {
-        console.log(Object.values(this.toDoItems[key]))
-        let todo =  new ToDo({text: 'Enter text here...'})
-        let project = new Project({text: this.toDoItems[key], todos: [todo]})
-        // this.toDoItems.push(project.getHtml())
-        this.toDoItems.splice(key, 1, project.getHtml())
-    }
 }
 </script>
 <style scoped>
     @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 
-    .children {
-        margin-left: 10px;
-    }
     .container {
         padding-top: 20px;
         border: 6px #bad9b5 solid;
