@@ -5,9 +5,29 @@
   </div>
 </template>
 
+
 <script lang="ts">
 import { Options, Vue} from 'vue-class-component'
 import ToDoList from './components/ToDoList.vue'
+
+//  DECORATOR PATTERN
+
+// tags -> je kan meerdere tags hebben
+
+// probleem: een aparte class maken voor elke combinatiemogelijkheid
+// class voor 'bug prioriteit'
+// class voor 'bug geen prioriteit'
+// class voor 'bug'
+// class voor 'feature'
+// class voor 'feature prioriteit
+// class voor 'feature geen prioriteit',
+// https://youtu.be/GCraGHx6gso?t=643
+
+// dan heb je super veel classes en ze doen allemaal hele kleine dingetjes.
+// heel lastig te managen want je hebt er zoveel van.
+// Een class explosion.
+
+
 
 @Options ({
   components: {
